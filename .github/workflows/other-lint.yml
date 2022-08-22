@@ -1,0 +1,51 @@
+---
+name: other-lint
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+  workflow_dispatch:
+
+jobs:
+  yaml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Setup python
+        uses: actions/setup-python@v4.2.0
+
+      - name: Install yamllint
+        run: pip install --user yamllint
+
+      - name: Lint normal yaml files
+        run: yamllint . -f github
+
+      - name: Install actionlint
+        id: get_actionlint
+        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+
+      - name: Run actionlint
+        run: ${{ steps.get_actionlint.outputs.executable }} -color -shellcheck=
+
+  markdown:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Setup node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Install markdownlint-cli2
+        run: npm install markdownlint-cli2 -g
+
+      - name: Lint markdown files
+        run: markdownlint-cli2 "**/*.md"
