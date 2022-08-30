@@ -1,22 +1,21 @@
 ---
 name: auto-merge
 
-permissions:
-  pull-requests: write
-  contents: write
-
 on:
   pull_request:
 
 jobs:
   auto-merge:
+    permissions:
+      pull-requests: write
+      contents: write
+
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout source code"
         uses: actions/checkout@v3
 
       - name: "Merge"
-        uses: ahmadnassri/action-dependabot-auto-merge@v2
+        uses: fastify/github-action-merge-dependabot@v3.0.0
         with:
-          target: minor
           github-token: ${{ secrets.GITHUB_TOKEN }}
