@@ -6,7 +6,7 @@
 
 body {
   background-color: #333;
-  color: #EEE;
+  color: #eee;
 }
 
 button {
@@ -22,6 +22,7 @@ button {
 button:hover {
   border: #88ff 2px solid;
   background-color: #555;
+  cursor: pointer;
 }
 
 button:active {
