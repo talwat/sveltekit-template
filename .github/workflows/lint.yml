@@ -8,6 +8,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Setup node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: "Build"
+        run: npm run build
   lint:
     runs-on: ubuntu-latest
 
@@ -24,3 +38,8 @@ jobs:
         run: |
           npm install
           npm run lint
+
+      - name: "Check with svelte-check"
+        run: |
+          npm install
+          npm run check

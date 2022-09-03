@@ -3,3 +3,40 @@
 * {
   font-family: "Roboto", sans-serif !important;
 }
+
+body {
+  background-color: #333;
+  color: #EEE;
+}
+
+button {
+  background-color: #444;
+  border: #444 2px solid;
+  color: inherit;
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 8px;
+  transition: 0.2s;
+}
+
+button:hover {
+  border: #88ff 2px solid;
+  background-color: #555;
+}
+
+button:active {
+  border: #55ff 2px solid;
+  background-color: #333;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+a {
+  color: #88ff;
+}
+
+a:visited {
+  color: #55ff;
+}

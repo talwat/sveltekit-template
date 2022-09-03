@@ -12,9 +12,6 @@ const config = {
       pages: "dist",
       assets: "dist",
     }),
-    prerender: {
-      default: true,
-    },
     paths: {
       base: "/sveltekit-template",
     },

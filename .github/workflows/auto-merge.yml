@@ -15,6 +15,14 @@ jobs:
       - name: "Checkout source code"
         uses: actions/checkout@v3
 
+      - name: Wait for tests to succeed
+        uses: lewagon/wait-on-check-action@v1.1.2
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'Run tests'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
       - name: "Merge"
         uses: fastify/github-action-merge-dependabot@v3.2.4
         with:
