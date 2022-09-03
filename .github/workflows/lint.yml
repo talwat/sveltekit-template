@@ -24,6 +24,7 @@ jobs:
         run: |
           npm install
           npm run build
+
   lint:
     runs-on: ubuntu-latest
 
