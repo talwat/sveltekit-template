@@ -15,14 +15,6 @@ jobs:
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
     steps:
-      - name: Wait for CodeQL to finish
-        uses: fountainhead/action-wait-for-check@v1.0.0
-        id: wait-for-build
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: CodeQL
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
-
       - name: 'Merge PR'
         uses: actions/github-script@v6
         with:
