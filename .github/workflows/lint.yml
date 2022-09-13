@@ -4,11 +4,13 @@ name: lint
 on:
   push:
   pull_request:
-
   workflow_dispatch:
 
+  schedule:
+    - cron: "44 22 * * 6"
+
 jobs:
-  eslint:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +27,7 @@ jobs:
           npm install
           npm run build
 
-  lint:
+  eslint:
     runs-on: ubuntu-latest
 
     steps:
