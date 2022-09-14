@@ -58,6 +58,8 @@ jobs:
 
       - name: Setup python
         uses: actions/setup-python@v4.2.0
+        with:
+          python-version: '3.10' 
 
       - name: Install yamllint
         run: pip install --user yamllint
@@ -91,7 +93,6 @@ jobs:
         run: markdownlint-cli2 "**/*.md"
 
   analyze:
-    name: Analyze
     runs-on: ubuntu-latest
     permissions:
       actions: read
